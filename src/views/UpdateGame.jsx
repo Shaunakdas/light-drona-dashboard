@@ -20,13 +20,10 @@ import {
   Grid,
   Row,
   Col,
-  FormGroup,
-  ControlLabel,
-  FormControl,
   Image
 } from "react-bootstrap";
 
-import { Card } from "components/Card/Card.jsx";
+import Agility from "./Agility";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import avatar from "assets/img/agility-tuts.png";
@@ -92,107 +89,12 @@ class UserProfile extends Component {
           </Col>
           </Row>
           <Row>
-            <Col md={12}>
-              <Card
-                title="Question"
-                content={
-                  <form>
-                    <Row>
-                      <Col md={6}>
-                        <FormGroup controlId="formControlsTextarea">
-                          <ControlLabel>Display</ControlLabel>
-                          <FormControl
-                            rows="5"
-                            componentClass="textarea"
-                            bsClass="form-control"
-                            placeholder="Here can be your description"
-                            defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md={6}>
-                        <ControlLabel>Final Answer</ControlLabel>
-                        <h5 className="title">What</h5>
-                      </Col>
-                    </Row>
-
-
-                    <Row>
-                      <Col md={6}>
-                        <FormGroup controlId="formControlsTextarea">
-                          <ControlLabel>Title</ControlLabel>
-                          <FormControl
-                            label= "Country"
-                            type= "text"
-                            bsClass= "form-control"
-                            placeholder= "Country"
-                            defaultValue="Sample Mode"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md={6}>
-                        <ControlLabel>Final Answer</ControlLabel>
-                        <h5 className="title">What</h5>
-                      </Col>
-                    </Row>
-                    <div className="clearfix" />
-                  </form>
-                }
-              />
-
-              <Card
-                title="Option 1"
-                content={
-                  <form>
-                    <Row>
-                      <Col md={6}>
-                        <FormGroup controlId="formControlsTextarea">
-                          <ControlLabel>Display</ControlLabel>
-                          <FormControl
-                            rows="2"
-                            componentClass="textarea"
-                            bsClass="form-control"
-                            placeholder="Here can be your description"
-                            defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md={6}>
-                        <ControlLabel>Final Answer</ControlLabel>
-                        <h5 className="title">What</h5>
-                      </Col>
-                    </Row>
-
-
-                    <Row>
-                      <Col md={6}>
-                        <FormGroup controlId="formControlsTextarea">
-                          <ControlLabel>Mode</ControlLabel>
-                          <FormControl
-                            label= "Country"
-                            type= "text"
-                            bsClass= "form-control"
-                            placeholder= "Country"
-                            defaultValue="Sample Mode"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md={6}>
-                        <ControlLabel>Final Answer</ControlLabel>
-                        <h5 className="title">What</h5>
-                      </Col>
-                    </Row>
-
-                    <div className="clearfix" />
-                  </form>
-                }
-              />
-              <Button bsStyle="info" pullRight fill type="submit">
-                Update Question
-              </Button>
-            </Col>
-            
-            </Row>
+          <Agility />
+          
+          <Button bsStyle="info" pullRight fill type="submit">
+              Update Question
+            </Button>
+          </Row>
           </Grid>
         </div>
     );
