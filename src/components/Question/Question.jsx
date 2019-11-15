@@ -19,6 +19,7 @@ import React, { Component } from "react";
 
 import { Card } from "components/Card/Card.jsx";
 import InputText from "../Attribute/InputText"
+import Selector from "../Attribute/Selector"
 
 class Question extends Component {
   render() {
@@ -35,6 +36,51 @@ class Question extends Component {
                 rows="5"
 
               />
+              {/* Hint */}
+              {
+                (questionObj.hint === undefined)?
+                  null : 
+                    <div>
+                      {(questionObj.hint.question === undefined)?
+                        null : 
+                        <InputText 
+                          title="Hint Before attempt"
+                          input={questionObj.hint.question}
+                          rows="2"
+                      />
+                      }
+                    
+                      {(questionObj.hint.solution === undefined)?
+                          null : 
+                          <InputText 
+                            title="Hint Before Question"
+                            input={questionObj.hint.solution}
+                            rows="2"
+                          />
+                      }
+                    </div>
+                  
+                  
+              }
+              {/* Correct */}
+              {
+                (questionObj.answer === undefined)?
+                  null : 
+                  <Selector 
+                    title="Correct"
+                    isChecked={questionObj.answer}
+                  />
+              }
+              {/* Title */}
+              {
+                (questionObj.title === undefined)?
+                  null : 
+                  <InputText 
+                   title="Title"
+                   rows="2"
+                   input={questionObj.title}
+                 />
+              }
               {/* Solution */}
               <InputText 
                 title="Solution"

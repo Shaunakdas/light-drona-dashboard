@@ -24,6 +24,7 @@ import {
 } from "react-bootstrap";
 
 import Agility from "./Games/Agility.jsx";
+import Diction from "./Games/Diction.jsx";
 import Purchasing from "./Games/Purchasing.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
@@ -31,7 +32,7 @@ import avatar from "assets/img/agility-tuts.png";
 
 class UserProfile extends Component {
   render() {
-    let game = "Purchasing";  
+    let game = "Diction";  
     return (
       <div className="content">
         <Grid fluid>
@@ -96,7 +97,8 @@ class UserProfile extends Component {
           {
             {
               'Agility': <Agility />,
-              'Purchasing': <Purchasing />
+              'Purchasing': <Purchasing />,
+              'Diction': <Diction />,
             }[game]
           }
           
