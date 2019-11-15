@@ -41,6 +41,26 @@ class Question extends Component {
                 rows="2"
                 input={questionObj.hint}
               />
+              {/* Title */}
+              {
+                (questionObj.title === undefined)?
+                  null : 
+                  <InputText 
+                   title="Title"
+                   rows="2"
+                   input={questionObj.title}
+                 />
+              }
+              {/* Mode */}
+              {
+                (questionObj.mode === undefined)?
+                  null : 
+                  <InputText 
+                   title="Mode"
+                   rows="2"
+                   input={questionObj.mode}
+                 />
+              }
               <div className="clearfix" />
             </form>
           }

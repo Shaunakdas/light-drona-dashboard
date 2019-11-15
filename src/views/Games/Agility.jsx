@@ -22,7 +22,7 @@ import {
 
 import OptionList from "components/Option/OptionList";
 import Question from "components/Question/Question";
-import AgilityJson from "./Agility.json"
+import AgilityJson from "./agility_structure.json"
 
 class Agility extends Component {
   

@@ -23,13 +23,15 @@ import {
   Image
 } from "react-bootstrap";
 
-import Agility from "./Agility";
+import Agility from "./Games/Agility.jsx";
+import Purchasing from "./Games/Purchasing.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import avatar from "assets/img/agility-tuts.png";
 
 class UserProfile extends Component {
   render() {
+    let game = "Purchasing";  
     return (
       <div className="content">
         <Grid fluid>
@@ -89,7 +91,14 @@ class UserProfile extends Component {
           </Col>
           </Row>
           <Row>
-          <Agility />
+          {/* {gameComponent} */}
+          
+          {
+            {
+              'Agility': <Agility />,
+              'Purchasing': <Purchasing />
+            }[game]
+          }
           
           <Button bsStyle="info" pullRight fill type="submit">
               Update Question
