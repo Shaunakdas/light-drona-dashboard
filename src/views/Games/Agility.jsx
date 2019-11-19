@@ -20,18 +20,53 @@ import {
   Col,
 } from "react-bootstrap";
 
-import OptionList from "components/Option/OptionList";
 import Question from "components/Question/Question";
-import AgilityJson from "./agility_structure.json"
+import AgilityJson from "./agility_structure.json";
+import ConversionJson from "./conversion_structure.json";
+import PurchasingJson from "./purchasing_structure.json";
+import DictionJson from "./diction_structure.json";
+import DiscountingJson from "./discounting_structure.json";
+import PercentagesJson from "./percentages_structure.json";
+import RefinementJson from "./refinement_structure.json";
+import TippingJson from "./tipping_structure.json";
+import InversionJson from "./inversion_structure.json";
+import ProportionJson from "./proportion_structure.json";
+import EstimationJson from "./estimation_structure.json";
 
 class Agility extends Component {
   
   render() {
-    let questionObj = AgilityJson.game_holder_detail.question_input.sections[0];
+    let jsonStr = {
+      'Agility': AgilityJson,
+      'Conversion': ConversionJson,
+      'Diction': DictionJson,
+      'Discounting': DiscountingJson,
+      'Estimation': EstimationJson,
+      'Inversion': InversionJson,
+      'Proportion': ProportionJson,
+      'Purchasing': PurchasingJson,
+      'Percentages': PercentagesJson,
+      'Refinement': RefinementJson,
+      'Tipping': TippingJson,
+    }['Conversion']
+    let questionObj = jsonStr.game_holder_detail.question_input.sections[0];
+    
     return (
       <Col md={12}>
-        <Question questionObj={questionObj}/>
-        <OptionList options={questionObj.options}/>
+        <Question questionObj={questionObj} />
+        {/* Title */}
+        {
+          (questionObj.blocks === undefined)?
+            null :
+            <div>
+              {
+                questionObj.blocks.map((block) => {
+                  return (
+                    <Question questionObj={block}/>);
+                })
+              }
+            </div>
+        }  
       </Col>
     );
   }

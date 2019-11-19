@@ -18,29 +18,157 @@
 import React, { Component } from "react";
 
 import { Card } from "components/Card/Card.jsx";
-import Attribute from "../Attribute/InputText"
+import InputText from "../Attribute/InputText"
 import Selector from "../Attribute/Selector"
 
 class Option extends Component {
   render() {
     let optionObj = this.props.option;
+    console.log(optionObj);
     return (
       <Card
         title="Option"
         content={
           <form>
             {/* Display */}
-            <Attribute 
-              title="Display"
-              rows="2"
-              input={optionObj.answer}
+            {
+              (optionObj.answer === undefined)?
+                null : 
+                <InputText 
+                  title="Display"
+                  rows="2"
+                  input={optionObj.answer}
+                />
+            }
+            {/* Index */}
+            {
+              (optionObj.index === undefined)?
+                null : 
+                <InputText 
+                  title="Index"
+                  rows="2"
+                  input={optionObj.index}
+                />
+            }
+            {
+              (optionObj.display === undefined)?
+                null : 
+                <InputText 
+                  title="Display"
+                  rows="2"
+                  input={optionObj.display}
+                />
+            }
+            {/* Hint */}
+            {
+              (optionObj.hint === undefined)?
+                null : 
+                <InputText 
+                  title="Hint"
+                  rows="2"
+                  input={optionObj.hint}
+                />
+            }
+            {/* Title */}
+            {
+              (optionObj.title === undefined)?
+                null : 
+                <InputText 
+                  title="Title"
+                  rows="1"
+                  input={optionObj.title}
+                />
+            }
+            {/* Value Type */}
+            {
+              (optionObj.value_type === undefined)?
+                null : 
+                <InputText 
+                  title="Value Type"
+                  rows="1"
+                  input={optionObj.value_type}
+                />
+            }
+            {/* Key */}
+            {
+              (optionObj.key === undefined)?
+                null : 
+                <InputText 
+                  title="Key"
+                  rows="1"
+                  input={optionObj.key}
+                />
+            }
+            {/* Value */}
+            {
+              (optionObj.value === undefined)?
+                null : 
+                <InputText 
+                  title="Value"
+                  rows="1"
+                  input={optionObj.value}
+                />
+            }
+            {/* Option Index */}
+            {
+              (optionObj.option_index === undefined)?
+                null : 
+                <InputText 
+                  title="Option Index"
+                  rows="1"
+                  input={optionObj.option_index}
+                />
+            }
+            {/* Upper */}
+            {
+              (optionObj.upper === undefined)?
+                null : 
+                <InputText 
+                  title="Upper"
+                  rows="2"
+                  input={optionObj.upper}
+                />
+            }
+            {/* Lower */}
+            {
+              (optionObj.lower === undefined)?
+                null : 
+                <InputText 
+                  title="Lower"
+                  rows="2"
+                  input={optionObj.lower}
+                />
+            }
+            {/* Attempted */}
+            {
+              (optionObj.attempted === undefined)?
+                null : 
+                <InputText 
+                  title="Attempted"
+                  rows="2"
+                  input={optionObj.attempted}
+                />
+            }
+            {/* Sequence */}
+            {
+              (optionObj.sequence === undefined)?
+                null : 
+                <InputText 
+                  title="Sequence"
+                  rows="2"
+                  input={optionObj.sequence}
+                />
+            }
 
-            />
             {/* Correct */}
-            <Selector 
-              title="Correct"
-              isChecked={optionObj.correct}
-            />
+            {
+              (optionObj.correct === undefined)?
+                null : 
+                <Selector 
+                  title="Correct"
+                  isChecked={optionObj.correct}
+                />
+            }
             <div className="clearfix" />
           </form>
         }

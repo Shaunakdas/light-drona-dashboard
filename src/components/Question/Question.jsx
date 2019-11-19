@@ -20,6 +20,10 @@ import React, { Component } from "react";
 import { Card } from "components/Card/Card.jsx";
 import InputText from "../Attribute/InputText"
 import Selector from "../Attribute/Selector"
+import OptionList from "components/Option/OptionList";
+import NumberLine from "./NumberLine";
+
+import { bool } from "prop-types";
 
 class Question extends Component {
   render() {
@@ -34,78 +38,194 @@ class Question extends Component {
                 title="Display"
                 input={questionObj.question}
                 rows="5"
-
               />
+              {/* Question Highlights */}
+              <InputText 
+                title="Question Highlight"
+                input={questionObj.section_question}
+                rows="5"
+              />
+              {/* Time */}
+              <InputText 
+                title="time"
+                input={questionObj.time}
+                rows="1"
+              />
+              {/* Tip */}
+              <InputText 
+                title="Tip"
+                input={questionObj.tip}
+                rows="2"
+              />
+              {/* Bubble */}
+              <InputText 
+                title="Bubble"
+                input={questionObj.bubble}
+                rows="1"
+              />
+              {/* Correct Option Count */}
+              <InputText 
+                title="Correct Option Count"
+                input={questionObj.correct_option_count}
+                rows="1"
+              />
+
+              {/* Tips */}
+              {
+                (questionObj.tips === undefined)?
+                  null : 
+                  <div>
+                    {
+                      (typeof questionObj.tips === 'string') || ( questionObj.hint === null)?
+                      <InputText 
+                          title="Tips"
+                          input={questionObj.tips}
+                          rows="2"
+                      />
+                        : 
+                        <div>
+                          {
+                            questionObj.tips.map((tip) => {
+                              return (
+                                <InputText 
+                                  title="Tip"
+                                  rows="2"
+                                  input={tip}
+                                />
+                              )
+                            })
+                          }
+                        </div>
+                    }
+                  </div>
+              }
+              {/* Numpad */}
+              {
+                (questionObj.numpad === undefined)?
+                  null : 
+                  <div>
+                    {
+                      questionObj.numpad.map((num) => {
+                        return (
+                          <InputText 
+                            title="Numpad"
+                            rows="1"
+                            input={num}
+                          />
+                        )
+                      })
+                    }
+                  </div>
+              }
               {/* Hint */}
               {
                 (questionObj.hint === undefined)?
                   null : 
                     <div>
-                      {(questionObj.hint.question === undefined)?
-                        null : 
+                      {
+                        (typeof questionObj.hint === 'string') || ( questionObj.hint === null)?
                         <InputText 
-                          title="Hint Before attempt"
-                          input={questionObj.hint.question}
-                          rows="2"
-                      />
-                      }
-                    
-                      {(questionObj.hint.solution === undefined)?
-                          null : 
-                          <InputText 
-                            title="Hint Before Question"
-                            input={questionObj.hint.solution}
+                            title="Hint"
+                            input={questionObj.hint}
                             rows="2"
-                          />
+                        />
+                          : 
+                          <div>
+                            <InputText 
+                              title="Hint Before attempt"
+                              input={questionObj.hint.question}
+                              rows="2"
+                            />
+                          
+                            <InputText 
+                              title="Hint After Attempt"
+                              input={questionObj.hint.solution}
+                              rows="2"
+                            />
+                          </div>
                       }
                     </div>
-                  
-                  
               }
               {/* Correct */}
               {
                 (questionObj.answer === undefined)?
                   null : 
-                  <Selector 
-                    title="Correct"
-                    isChecked={questionObj.answer}
-                  />
+                  <div>
+                    {
+                      (typeof questionObj.answer === bool)?
+                        <Selector 
+                          title="Correct"
+                          isChecked={questionObj.answer}
+                        />
+                        :
+                        <InputText 
+                          title="Answer"
+                          input={questionObj.answer}
+                          rows="2"
+                        />
+                    }
+                  </div>
+                  
               }
-              {/* Title */}
-              {
-                (questionObj.title === undefined)?
-                  null : 
-                  <InputText 
-                   title="Title"
-                   rows="2"
-                   input={questionObj.title}
-                 />
-              }
-              {/* Solution */}
+              {/* Type */}
               <InputText 
-                title="Solution"
-                rows="2"
-                input={questionObj.hint}
+                title="Type"
+                rows="1"
+                input={questionObj.type}
               />
               {/* Title */}
-              {
-                (questionObj.title === undefined)?
-                  null : 
-                  <InputText 
-                   title="Title"
-                   rows="2"
-                   input={questionObj.title}
-                 />
-              }
+              <InputText 
+                title="Title"
+                rows="2"
+                input={questionObj.title}
+              />
               {/* Mode */}
+              <InputText 
+                title="Mode"
+                rows="2"
+                input={questionObj.mode}
+              />
+
+
+              {/* Blocks */}
               {
-                (questionObj.mode === undefined)?
+                (questionObj.blocks === undefined)?
                   null : 
-                  <InputText 
-                   title="Mode"
-                   rows="2"
-                   input={questionObj.mode}
-                 />
+                  <div>
+                    {
+                      questionObj.blocks.map((block) => {
+                        return (
+                          <div>
+                            <InputText 
+                              title="Block"
+                              rows="2"
+                              input={block.title}
+                            />
+                            {
+                              (block.faces === undefined)?
+                                null : 
+                                <OptionList title="Faces" options={block.faces}/>
+                            }
+                            
+                            
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+              }
+              {/* Number Line */}
+              <NumberLine 
+                title="Number Line"
+                number_line={questionObj.number_line}
+                rows="1"
+              />
+
+              {/* Options */}
+              {
+                (questionObj.options === undefined)?
+                  null : 
+                  <OptionList options={questionObj.options}/>
               }
               <div className="clearfix" />
             </form>

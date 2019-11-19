@@ -28,26 +28,28 @@ class InputText extends Component {
   render() {
     console.log(this.props.input);
     return (
-      <Row>
-        <Col md={6}>
-          <FormGroup controlId="formControlsTextarea">
-            <ControlLabel>
-              {this.props.title}
-            </ControlLabel>
-            <FormControl
-              rows={this.props.rows}
-              componentClass="textarea"
-              bsClass="form-control"
-              placeholder="Here can be your description"
-              defaultValue={this.props.input}
-            />
-          </FormGroup>
-        </Col>
-        <Col md={6}>
-          <ControlLabel>Final {this.props.title}</ControlLabel>
-          <h5 className="title">What</h5>
-        </Col>
-      </Row>
+      (this.props.input === undefined)?
+        null : 
+        <Row>
+          <Col md={6}>
+            <FormGroup controlId="formControlsTextarea">
+              <ControlLabel>
+                {this.props.title}
+              </ControlLabel>
+              <FormControl
+                rows={this.props.rows}
+                componentClass="textarea"
+                bsClass="form-control"
+                placeholder="Here can be your description"
+                defaultValue={this.props.input}
+              />
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <ControlLabel>Final {this.props.title}</ControlLabel>
+            <h5 className="title">{this.props.input}</h5>
+          </Col>
+        </Row>
     );
   }
 }
