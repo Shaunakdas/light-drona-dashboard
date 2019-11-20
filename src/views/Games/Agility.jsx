@@ -48,11 +48,11 @@ class Agility extends Component {
       'Percentages': PercentagesJson,
       'Refinement': RefinementJson,
       'Tipping': TippingJson,
-    }['Conversion']
+    }['Refinement']
     let questionObj = jsonStr.game_holder_detail.question_input.sections[0];
     
     return (
-      <Col md={12}>
+      <Col md={9}>
         <Question questionObj={questionObj} />
         {/* Title */}
         {

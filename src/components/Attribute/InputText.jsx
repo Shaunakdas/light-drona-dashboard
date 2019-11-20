@@ -23,10 +23,66 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import 'katex/dist/katex.min.css';
+import {  BlockMath } from 'react-katex';
+import Card from "components/Card/Card";
 
 class InputText extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      name: props.name,
+      type: props.type||'text',
+      value: props.input||'',
+      editClassName: props.editClassName,
+      edit: false,
+      rows: props.rows
+    }
+  }
+  editComponent() {
+    return (
+      this.state.edit===true&&
+      <FormControl
+        rows={this.state.rows}
+        componentClass="textarea"
+        name={this.state.name}
+        type={this.state.type}
+        value={this.state.value}
+        className={this.state.editClassName}
+        autoFocus
+        onFocus={event=>{
+          const value = event.target.value
+          event.target.value = ''
+          event.target.value = value
+          this.setState({backup:this.state.value})
+        }}
+        onChange={event=>{
+          this.setState({value:event.target.value})
+        }}
+        onBlur={event=>{
+          this.setState({edit:false})
+        }}
+        onKeyUp={event=>{
+          if(event.key==='Escape') {
+            this.setState({edit:false, value:this.state.backup})
+          }
+        }}
+      />
+      ||
+      <FormGroup controlId="formControlsTextarea">
+        <Card
+          content={this.state.value}
+          md={6}
+          block={true}
+          onClick={event=>{
+            this.setState({edit:this.state.edit!==true})
+          }}>
+          
+        </Card>
+      </FormGroup>
+    )
+  }
   render() {
-    console.log(this.props.input);
     return (
       (this.props.input === undefined)?
         null : 
@@ -36,18 +92,21 @@ class InputText extends Component {
               <ControlLabel>
                 {this.props.title}
               </ControlLabel>
-              <FormControl
+              {/* <FormControl
                 rows={this.props.rows}
                 componentClass="textarea"
                 bsClass="form-control"
                 placeholder="Here can be your description"
                 defaultValue={this.props.input}
-              />
+              /> */}
+              {
+                this.editComponent()
+              }
             </FormGroup>
           </Col>
           <Col md={6}>
             <ControlLabel>Final {this.props.title}</ControlLabel>
-            <h5 className="title">{this.props.input}</h5>
+            <BlockMath>{this.state.value}</BlockMath>
           </Col>
         </Row>
     );
