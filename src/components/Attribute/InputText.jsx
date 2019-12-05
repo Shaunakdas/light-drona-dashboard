@@ -26,7 +26,13 @@ import {
 import 'katex/dist/katex.min.css';
 import {  BlockMath } from 'react-katex';
 import Card from "components/Card/Card";
+import MathJax from 'react-mathjax';
 
+const convertToKatex = (texString) => {
+  let updatedText = texString.toString().replace(/ /g, '\\,');
+   updatedText = updatedText.toString().replace(/\\bg\[07c\]{\\color\[cyan\]/g, '{');
+  return updatedText;
+}
 class InputText extends Component {
   constructor(props){
     super(props)
@@ -39,6 +45,7 @@ class InputText extends Component {
       rows: props.rows
     }
   }
+  
   editComponent() {
     return (
       this.state.edit===true&&
@@ -106,7 +113,8 @@ class InputText extends Component {
           </Col>
           <Col md={6}>
             <ControlLabel>Final {this.props.title}</ControlLabel>
-            <BlockMath>{this.state.value}</BlockMath>
+            <BlockMath strict={'warn'} trust={false}>{convertToKatex(this.state.value)}</BlockMath>
+            
           </Col>
         </Row>
     );
