@@ -28,8 +28,10 @@ import {
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
+import  StandardDropdown  from "components/AcadEntity/StandardDropdown";
 // import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
+
 
 import { thArray, tdArray } from "variables/Variables.jsx";
 
@@ -52,9 +54,7 @@ class GameList extends Component {
                           <ControlLabel>Standard: </ControlLabel>
                         </div>
                         <div className="col-md-5">
-                          <DropdownButton title="Select Standard">
-                            <MenuItem href="#books">Books</MenuItem>
-                          </DropdownButton>
+                          <StandardDropdown />
                         </div>
                         <div className="col-md-3">
                           <Button bsStyle="info" fill type="submit">
