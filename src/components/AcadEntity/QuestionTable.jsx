@@ -8,21 +8,12 @@ import {
 import { questionsFetchData } from '../../store/questions/actions';
 
  class QuestionTable extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          selectedOption: "Select Question" // default selected value
-        };
-      }
-    handleSelect(eventKey, event) {
-        this.setState({ selectedOption: this.props.questions.question_holders[eventKey].name });
-    }
     render() {
         if (this.props.questions.hasErrored) {
             return <p>Sorry! There was an error loading the questions</p>;
         }
         if (this.props.questions.isLoading) {
-            return <DropdownButton title="Loading…" />;
+            return <p>Loading ...</p>;
         }
         console.log(this.props);
         return (

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-    DropdownButton,
     Table,
     Button
   } from "react-bootstrap";
@@ -9,21 +8,12 @@ import {
   import { questionsFetchData } from '../../store/questions/actions';
 
  class GameTable extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          selectedOption: "Select Game" // default selected value
-        };
-      }
-    handleSelect(eventKey, event) {
-        this.setState({ selectedOption: this.props.games.game_holders[eventKey].name });
-    }
     render() {
         if (this.props.games.hasErrored) {
             return <p>Sorry! There was an error loading the games</p>;
         }
         if (this.props.games.isLoading) {
-            return <DropdownButton title="Loading…" />;
+            return <p>Loading ...</p>;
         }
         return (
             <Table striped hover>
