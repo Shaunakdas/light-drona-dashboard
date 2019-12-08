@@ -7,6 +7,8 @@ export function chapters(state = initialState, action) {
         return { ...state, isLoading: false, chapters: action.chapters.chapters };
     case 'CHAPTERS_HAS_ERRORED': 
         return { ...state, isLoading: false, errorMessage: 'action.payload.message' };
+    case 'CHAPTER_SELECTED': 
+        return { ...state, selected: action.chapter };
     default:
         return state;
   }

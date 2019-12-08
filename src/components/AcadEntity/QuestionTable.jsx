@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import {
     DropdownButton,
     Table,
     MenuItem
   } from "react-bootstrap";
-import { questionsFetchData } from '../../store/questions/actions';
+import { questionsFetchData,questionSelected } from '../../store/questions/actions';
 
  class QuestionTable extends Component {
+    questionSelection(questionKey){
+        let selectedQuestion = this.props.questions.questions[questionKey];
+        this.props.questionsFetchData(selectedQuestion.id);
+        this.props.questionSelected(selectedQuestion);
+    }
     render() {
         if (this.props.questions.hasErrored) {
             return <p>Sorry! There was an error loading the questions</p>;
@@ -34,7 +40,7 @@ import { questionsFetchData } from '../../store/questions/actions';
                         <td key={question.question}>{question.question}</td>
                         <td key={"key"}>
                             <DropdownButton title="Edit">
-                                <MenuItem href="game/edit" eventKey={2.1}>Open</MenuItem>
+                                <MenuItem eventKey={2.1}><NavLink to="game/edit">Open</NavLink></MenuItem>
                                 <MenuItem eventKey={2.1}>Move</MenuItem>
                                 <MenuItem divider />
                                 <MenuItem eventKey={2.1}>Delete</MenuItem>
@@ -56,7 +62,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchData: () => dispatch(questionsFetchData())
+      fetchData: () => dispatch(questionsFetchData()),
+      questionSelected: (question) => dispatch(questionSelected(question)), 
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionTable);

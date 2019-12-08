@@ -16,6 +16,12 @@ export function chaptersFetchDataSuccess(chapters) {
       chapters
   };
 }
+export function chapterSelected(chapter) {
+  return {
+      type: 'CHAPTER_SELECTED',
+      chapter
+  };
+}
 export function chaptersFetchData(standardId) {
   return (dispatch) => {
       dispatch(chaptersIsLoading(true));

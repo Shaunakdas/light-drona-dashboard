@@ -16,6 +16,12 @@ export function questionsFetchDataSuccess(questions) {
       questions
   };
 }
+export function questionSelected(question) {
+  return {
+      type: 'QUESTION_SELECTED',
+      question
+  };
+}
 export function questionsFetchData(gameId) {
   return (dispatch) => {
       dispatch(questionsIsLoading(true));

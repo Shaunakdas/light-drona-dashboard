@@ -16,6 +16,7 @@
 
 */
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import {
   Grid,
   Row,
@@ -29,7 +30,8 @@ import Button from "components/CustomButton/CustomButton.jsx";
 
 import avatar from "assets/img/agility-tuts.png";
 
-class UserProfile extends Component {
+class UpdateGame extends Component {
+  
   render() {  
     return (
       <div className="content">
@@ -104,4 +106,9 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile;
+const mapStateToProps = (state) => {
+  return {
+      questions: state.questions
+  };
+};
+export default connect(mapStateToProps)(UpdateGame);

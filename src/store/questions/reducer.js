@@ -7,6 +7,8 @@ export function questions(state = initialState, action) {
         return { ...state, isLoading: false, questions: action.questions.game_holder_detail.question_input.sections };
     case 'QUESTIONS_HAS_ERRORED': 
         return { ...state, isLoading: false, errorMessage: 'action.payload.message' };
+    case 'QUESTION_SELECTED': 
+        return { ...state, selected: action.question };
     default:
         return state;
   }

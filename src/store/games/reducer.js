@@ -7,6 +7,8 @@ export function games(state = initialState, action) {
         return { ...state, isLoading: false, games: action.games.game_holders };
     case 'GAMES_HAS_ERRORED': 
         return { ...state, isLoading: false, errorMessage: 'action.payload.message' };
+    case 'GAME_SELECTED': 
+        return { ...state, selected: action.game };
     default:
         return state;
   }

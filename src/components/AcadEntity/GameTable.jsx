@@ -4,10 +4,15 @@ import {
     Table,
     Button
   } from "react-bootstrap";
-  import { gamesFetchData } from '../../store/games/actions';
+  import { gamesFetchData, gameSelected } from '../../store/games/actions';
   import { questionsFetchData } from '../../store/questions/actions';
 
  class GameTable extends Component {
+    gameSelection(gameKey){
+        let selectedGame = this.props.games.games[gameKey];
+        this.props.questionsFetchData(selectedGame.id);
+        this.props.gameSelected(selectedGame);
+    }
     render() {
         if (this.props.games.hasErrored) {
             return <p>Sorry! There was an error loading the games</p>;
@@ -34,7 +39,7 @@ import {
                         <td key={game.game.name}>{game.game.name}</td>
                         <td key={game.id}>{game.id}</td>
                         <td key={"key"}>
-                            <Button bsStyle="info" fill onClick={() => this.props.questionsFetchData(game.id)}>
+                            <Button bsStyle="info" onClick={() => this.gameSelection(i)}>
                                 <i className="pe-7s-more" />
                             </Button>
                         </td>
@@ -55,7 +60,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       fetchData: () => dispatch(gamesFetchData()),
-      questionsFetchData: (gameId) => dispatch(questionsFetchData(gameId))
+      questionsFetchData: (gameId) => dispatch(questionsFetchData(gameId)),
+      gameSelected : (game) => dispatch(gameSelected(game)),
       
   };
 };

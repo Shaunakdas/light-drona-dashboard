@@ -16,6 +16,12 @@ export function gamesFetchDataSuccess(games) {
       games
   };
 }
+export function gameSelected(game) {
+  return {
+      type: 'GAME_SELECTED',
+      game
+  };
+}
 export function gamesFetchData(chapterId) {
   return (dispatch) => {
       dispatch(gamesIsLoading(true));
