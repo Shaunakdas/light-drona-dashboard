@@ -34,9 +34,10 @@ import { questionsFetchData } from '../../store/questions/actions';
                         <td key={question.question}>{question.question}</td>
                         <td key={"key"}>
                             <DropdownButton title="Edit">
-                                <MenuItem eventKey={2.1}>Action</MenuItem>
-                                <MenuItem eventKey={2.1}>Another Action</MenuItem>
+                                <MenuItem href="game/edit" eventKey={2.1}>Open</MenuItem>
+                                <MenuItem eventKey={2.1}>Move</MenuItem>
                                 <MenuItem divider />
+                                <MenuItem eventKey={2.1}>Delete</MenuItem>
                             </DropdownButton>
                         </td>
                     </tr>
