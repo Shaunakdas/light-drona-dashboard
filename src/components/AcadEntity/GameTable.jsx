@@ -5,7 +5,8 @@ import {
     Table,
     Button
   } from "react-bootstrap";
-import { gamesFetchData } from '../../store/games/actions';
+  import { gamesFetchData } from '../../store/games/actions';
+  import { questionsFetchData } from '../../store/questions/actions';
 
  class GameTable extends Component {
     constructor(props) {
@@ -18,31 +19,13 @@ import { gamesFetchData } from '../../store/games/actions';
         this.setState({ selectedOption: this.props.games.game_holders[eventKey].name });
     }
     render() {
-        console.log('Triggered',this.props);
         if (this.props.games.hasErrored) {
             return <p>Sorry! There was an error loading the games</p>;
         }
         if (this.props.games.isLoading) {
             return <DropdownButton title="Loading…" />;
         }
-        console.log(this.props);
         return (
-            // <DropdownButton title={this.state.selectedOption} onSelect={this.handleSelect.bind(this)}>
-            //     {("games" in this.props.games)?
-            //       this.props.games.game_holders.map((game, i) => (
-                      
-            //             <MenuItem
-            //                 href="#books"
-            //                 key={game.id}
-            //                 value={game.id}
-            //                 eventKey={i}
-            //             >
-            //                 {game.name}
-            //             </MenuItem>
-                      
-            //       )) : null
-            //     }
-            // </DropdownButton>
             <Table striped hover>
                 <thead>
                 <tr>
@@ -61,7 +44,7 @@ import { gamesFetchData } from '../../store/games/actions';
                         <td key={game.game.name}>{game.game.name}</td>
                         <td key={game.id}>{game.id}</td>
                         <td key={"key"}>
-                            <Button bsStyle="info" fill type="submit">
+                            <Button bsStyle="info" fill onClick={() => this.props.questionsFetchData(game.id)}>
                                 <i className="pe-7s-more" />
                             </Button>
                         </td>
@@ -81,7 +64,9 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchData: () => dispatch(gamesFetchData())
+      fetchData: () => dispatch(gamesFetchData()),
+      questionsFetchData: (gameId) => dispatch(questionsFetchData(gameId))
+      
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GameTable);

@@ -22,21 +22,15 @@ import {
   Col,
   FormGroup,
   ControlLabel,
-  Table,
-  DropdownButton,
-  MenuItem
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
 import  StandardDropdown  from "components/AcadEntity/StandardDropdown";
 import  ChapterDropdown  from "components/AcadEntity/ChapterDropdown";
 import  GameTable  from "components/AcadEntity/GameTable";
+import QuestionTable from "components/AcadEntity/QuestionTable";
 
-// import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
-
-
-import { thArray, tdArray } from "variables/Variables.jsx";
 
 
 class GameList extends Component {
@@ -123,38 +117,7 @@ class GameList extends Component {
             </Row>
             <Row>
             <div className="card card-user">
-                      <Table striped hover>
-                    <thead>
-                      <tr>
-                        {thArray.map((prop, key) => {
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                            <td key={"key"}>
-                              <DropdownButton title="Edit">
-                                  <MenuItem eventKey={2.1}>Action</MenuItem>
-                                  <MenuItem eventKey={2.2}>Another action</MenuItem>
-                                  <MenuItem eventKey={2.3}>Something</MenuItem>
-                                  <MenuItem eventKey={2.4}>Another action</MenuItem>
-                                  <MenuItem eventKey={2.5}>Something</MenuItem>
-                                  <MenuItem divider />
-                                  <MenuItem eventKey={2.5}>Separated link</MenuItem>
-                              </DropdownButton>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                      
-                    </tbody>
-                  </Table>
+            <QuestionTable />
                   </div>
                     </Row>
             </Col>
