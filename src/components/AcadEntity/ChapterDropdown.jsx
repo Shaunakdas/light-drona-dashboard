@@ -5,6 +5,7 @@ import {
     MenuItem
   } from "react-bootstrap";
 import { chaptersFetchData } from '../../store/chapters/actions';
+import { gamesFetchData } from '../../store/games/actions';
 
  class ChapterDropdown extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ import { chaptersFetchData } from '../../store/chapters/actions';
       }
     handleSelect(eventKey, event) {
         this.setState({ selectedOption: this.props.chapters.chapters[eventKey].name });
+        this.props.gamesFetchData(this.props.chapters.chapters[eventKey].id);
     }
     render() {
         if (this.props.chapters.hasErrored) {
@@ -50,7 +52,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchData: () => dispatch(chaptersFetchData())
+      fetchData: () => dispatch(chaptersFetchData()),
+      gamesFetchData: (chapterId) => dispatch(gamesFetchData(chapterId)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ChapterDropdown);

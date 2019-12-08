@@ -30,6 +30,8 @@ import {
 import { Card } from "components/Card/Card.jsx";
 import  StandardDropdown  from "components/AcadEntity/StandardDropdown";
 import  ChapterDropdown  from "components/AcadEntity/ChapterDropdown";
+import  GameTable  from "components/AcadEntity/GameTable";
+
 // import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
@@ -87,32 +89,7 @@ class GameList extends Component {
 
                     <Row>
                       <Col md={12}>
-                      <Table striped hover>
-                    <thead>
-                      <tr>
-                        {thArray.map((prop, key) => {
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                            <td key={"key"}>
-                              <Button bsStyle="info" fill type="submit">
-                                <i className="pe-7s-more" />
-                              </Button>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                      
-                    </tbody>
-                  </Table>
+                      <GameTable />
                       </Col>
                     </Row>
                     <div className="clearfix" />
