@@ -16,6 +16,12 @@ export function standardsFetchDataSuccess(standards) {
       standards
   };
 }
+export function standardSelected(standard) {
+  return {
+      type: 'STANDARD_SELECTED',
+      standard
+  };
+}
 export function standardsFetchData() {
   return (dispatch) => {
       dispatch(standardsIsLoading(true));
