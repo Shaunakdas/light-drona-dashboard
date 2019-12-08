@@ -4,7 +4,7 @@ import {
     DropdownButton,
     MenuItem
   } from "react-bootstrap";
-import { standardsFetchData } from '../../actions/standards';
+import { standardsFetchData } from '../../store/standards/actions';
 
  class StandardDropdown extends Component {
     constructor(props) {

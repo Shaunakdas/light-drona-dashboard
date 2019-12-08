@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { standards, standardsHasErrored, standardsIsLoading } from './standards';
+import { standards } from './standards/reducer';
 export default combineReducers({
   standards
 });
