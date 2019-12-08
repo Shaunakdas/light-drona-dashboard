@@ -5,6 +5,7 @@ import {
     MenuItem
   } from "react-bootstrap";
 import { standardsFetchData } from '../../store/standards/actions';
+import { chaptersFetchData } from '../../store/chapters/actions';
 
  class StandardDropdown extends Component {
     constructor(props) {
@@ -14,10 +15,11 @@ import { standardsFetchData } from '../../store/standards/actions';
         };
       }
     componentDidMount() {
-      this.props.fetchData('http://localhost:3000/api/v1/standards');
+      this.props.fetchData();
     }
     handleSelect(eventKey, event) {
         this.setState({ selectedOption: "Standard "+this.props.standards.standards[eventKey].name });
+        this.props.fetchChaptersData(this.props.standards.standards[eventKey].id);
     }
     render() {
         if (this.props.standards.hasErrored) {
@@ -53,7 +55,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchData: (url) => dispatch(standardsFetchData(url))
+      fetchData: () => dispatch(standardsFetchData()),
+      fetchChaptersData: (standard_id) => dispatch(chaptersFetchData(standard_id))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(StandardDropdown);

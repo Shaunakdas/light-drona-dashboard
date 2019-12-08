@@ -16,11 +16,11 @@ export function standardsFetchDataSuccess(standards) {
       standards
   };
 }
-export function standardsFetchData(url) {
+export function standardsFetchData() {
   return (dispatch) => {
       dispatch(standardsIsLoading(true));
 
-      fetch(url, {
+      fetch('http://localhost:3000/api/v1/standards', {
         method: 'get',
         headers: {
           'Content-Type':'application/json',

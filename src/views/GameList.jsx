@@ -29,6 +29,7 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import  StandardDropdown  from "components/AcadEntity/StandardDropdown";
+import  ChapterDropdown  from "components/AcadEntity/ChapterDropdown";
 // import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
@@ -72,9 +73,7 @@ class GameList extends Component {
                           <ControlLabel>Chapter: </ControlLabel>
                         </div>
                         <div className="col-md-5">
-                          <DropdownButton title="Select Chapter">
-                            <MenuItem href="#books">Chapters</MenuItem>
-                          </DropdownButton>
+                          <ChapterDropdown />
                         </div>
                         <div className="col-md-3">
                           <Button bsStyle="info" fill type="submit">
