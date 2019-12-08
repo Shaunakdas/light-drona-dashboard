@@ -24,7 +24,7 @@ import {
   Image
 } from "react-bootstrap";
 
-import Agility from "./Games/Agility.jsx";
+import QuestionEditor from "./Games/QuestionEditor.jsx";
 
 import Button from "components/CustomButton/CustomButton.jsx";
 
@@ -94,7 +94,7 @@ class UpdateGame extends Component {
           <Row>
           {/* {gameComponent} */}
           
-          <Agility />
+          <QuestionEditor question={this.props.questions.selected}/>
           
           <Button bsStyle="info" pullRight fill type="submit">
               Update Question

@@ -33,7 +33,7 @@ import InversionJson from "./inversion_structure.json";
 import ProportionJson from "./proportion_structure.json";
 import EstimationJson from "./estimation_structure.json";
 
-class Agility extends Component {
+class QuestionEditor extends Component {
   
   render() {
     let jsonStr = {
@@ -49,7 +49,7 @@ class Agility extends Component {
       'Refinement': RefinementJson,
       'Tipping': TippingJson,
     }['Refinement']
-    let questionObj = jsonStr.game_holder_detail.question_input.sections[0];
+    let questionObj = this.props.question;
     
     return (
       <Col md={9}>
@@ -72,4 +72,4 @@ class Agility extends Component {
   }
 }
 
-export default Agility;
+export default QuestionEditor;

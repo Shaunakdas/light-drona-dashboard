@@ -11,7 +11,6 @@ import { questionsFetchData,questionSelected } from '../../store/questions/actio
  class QuestionTable extends Component {
     questionSelection(questionKey){
         let selectedQuestion = this.props.questions.questions[questionKey];
-        this.props.questionsFetchData(selectedQuestion.id);
         this.props.questionSelected(selectedQuestion);
     }
     render() {
@@ -40,7 +39,11 @@ import { questionsFetchData,questionSelected } from '../../store/questions/actio
                         <td key={question.question}>{question.question}</td>
                         <td key={"key"}>
                             <DropdownButton title="Edit">
-                                <MenuItem eventKey={2.1}><NavLink to="game/edit">Open</NavLink></MenuItem>
+                                <MenuItem eventKey={2.1} onClick={() => this.questionSelection(i)}>
+                                    <NavLink to="game/edit">
+                                        Open
+                                    </NavLink>
+                                </MenuItem>
                                 <MenuItem eventKey={2.1}>Move</MenuItem>
                                 <MenuItem divider />
                                 <MenuItem eventKey={2.1}>Delete</MenuItem>
