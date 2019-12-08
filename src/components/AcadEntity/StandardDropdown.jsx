@@ -20,11 +20,11 @@ import { standardsFetchData } from '../../actions/standards';
         this.setState({ selectedOption: "Standard "+this.props.standards.standards[eventKey].name });
     }
     render() {
-        if (this.props.hasErrored) {
+        if (this.props.standards.hasErrored) {
             return <p>Sorry! There was an error loading the standards</p>;
         }
-        if (this.props.isLoading) {
-            return <p>Loading…</p>;
+        if (this.props.standards.isLoading) {
+            return <DropdownButton title="Loading…" />;
         }
         return (
             <DropdownButton title={this.state.selectedOption} onSelect={this.handleSelect.bind(this)}>
@@ -48,9 +48,7 @@ import { standardsFetchData } from '../../actions/standards';
 }
 const mapStateToProps = (state) => {
   return {
-      standards: state.standards,
-      hasErrored: state.standardsHasErrored,
-      isLoading: state.standardsIsLoading
+      standards: state.standards
   };
 };
 const mapDispatchToProps = (dispatch) => {
