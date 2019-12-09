@@ -38,6 +38,8 @@ class Question extends Component {
                 title="Display"
                 input={questionObj.question}
                 rows="5"
+                field="question"
+                questionAttr={questionObj}
               />
               {/* Question Highlights */}
               <InputText 

@@ -16,6 +16,7 @@
 
 */
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import {
   Row,
   Col,
@@ -27,6 +28,7 @@ import 'katex/dist/katex.min.css';
 import {  BlockMath } from 'react-katex';
 import Card from "components/Card/Card";
 import MathJax from 'react-mathjax';
+import { questionAttributeUpdateCalled } from '../../store/questionAttributes/actions';
 
 const convertToKatex = (texString) => {
   let updatedText = texString.toString().replace(/ /g, '\\,');
@@ -68,6 +70,13 @@ class InputText extends Component {
         }}
         onBlur={event=>{
           this.setState({edit:false})
+          const {id, entity_type} = this.props.questionAttr;
+          this.props.questionAttributeUpdateCalled({
+            id,
+            entity_type,
+            [this.props.field]: event.target.value
+          }
+            );
         }}
         onKeyUp={event=>{
           if(event.key==='Escape') {
@@ -120,5 +129,9 @@ class InputText extends Component {
     );
   }
 }
-
-export default InputText;
+const mapDispatchToProps = (dispatch) => {
+  return {
+      questionAttributeUpdateCalled: (questionAttributes) => dispatch(questionAttributeUpdateCalled(questionAttributes))
+  };
+};
+export default connect(null, mapDispatchToProps)(InputText);
