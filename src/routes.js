@@ -17,6 +17,8 @@
 */
 import Dashboard from "views/Dashboard.jsx";
 import UserProfile from "views/UserProfile.jsx";
+import GameList from "views/GameList.jsx";
+import UpdateGame from "views/UpdateGame.jsx";
 import TableList from "views/TableList.jsx";
 import Typography from "views/Typography.jsx";
 import Icons from "views/Icons.jsx";
@@ -37,6 +39,20 @@ const dashboardRoutes = [
     name: "User Profile",
     icon: "pe-7s-user",
     component: UserProfile,
+    layout: "/admin"
+  },
+  {
+    path: "/games",
+    name: "Game List",
+    icon: "pe-7s-user",
+    component: GameList,
+    layout: "/admin"
+  },
+  {
+    path: "/game/edit",
+    name: "Update Game",
+    icon: "pe-7s-user",
+    component: UpdateGame,
     layout: "/admin"
   },
   {
