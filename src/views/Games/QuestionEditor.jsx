@@ -22,41 +22,21 @@ import {
 
 import Question from "components/Question/Question";
 import AgilityJson from "./agility_structure.json";
-import ConversionJson from "./conversion_structure.json";
-import PurchasingJson from "./purchasing_structure.json";
-import DictionJson from "./diction_structure.json";
-import DiscountingJson from "./discounting_structure.json";
-import PercentagesJson from "./percentages_structure.json";
-import RefinementJson from "./refinement_structure.json";
-import TippingJson from "./tipping_structure.json";
-import InversionJson from "./inversion_structure.json";
-import ProportionJson from "./proportion_structure.json";
-import EstimationJson from "./estimation_structure.json";
 
 class QuestionEditor extends Component {
   
   render() {
-    let jsonStr = {
-      'Agility': AgilityJson,
-      'Conversion': ConversionJson,
-      'Diction': DictionJson,
-      'Discounting': DiscountingJson,
-      'Estimation': EstimationJson,
-      'Inversion': InversionJson,
-      'Proportion': ProportionJson,
-      'Purchasing': PurchasingJson,
-      'Percentages': PercentagesJson,
-      'Refinement': RefinementJson,
-      'Tipping': TippingJson,
-    }['Refinement']
-    let questionObj = this.props.question;
+    let questionObj = AgilityJson.game_holder_detail.question_input.sections[0];
+    if(!(this.props.question === undefined)){
+      questionObj = this.props.question;
+    }
     
     return (
       <Col md={9}>
         <Question questionObj={questionObj} />
         {/* Title */}
         {
-          (questionObj.blocks === undefined)?
+          !("blocks" in questionObj)?
             null :
             <div>
               {
